@@ -8,7 +8,7 @@ Not when it refuses. Not when it outputs a warning. Internally — in the raw ac
 
 This project answers that question using **linear probes**: dead-simple logistic regression classifiers trained on the model's hidden states at each layer. If a linear probe can separate harmful from non-harmful prompts at a given layer, the model has built a linearly decodable representation of "this is harmful" at that depth.
 
-The punchline: **by layer 13 of 36, the model knows.** And it knows whether you safety-train it or not.
+The punchline: **by layer 13 of 36, the model "knows."** And it "knows" whether you safety-train it or not — the signal is linearly decodable either way.
 
 ---
 
@@ -59,17 +59,19 @@ The dataset (`data/data_v7.csv`) is included. Plots save to `results/`.
 
 | What we measured | AUC | What it tells you |
 |---|:---:|---|
-| Random features (noise) | 0.601 | Probe isn't gaming the setup |
+| Random features (noise) | 0.601 | Expected for high-dimensional logistic regression on noise — sets the lower bound |
 | Embedding layer (layer 0) | 0.723 | Some signal in raw token representations |
 | Bag-of-words (just vocabulary, no model) | 0.878 | Words alone get you this far |
 | **Probe at peak layer 13** | **0.974** | Model computation adds real structure |
-| Safety-tuned model peak | 0.965 | Almost identical — safety training doesn't change the representation |
+| Safety-tuned model peak | 0.965 | Almost identical — safety training does not measurably change linear decodability |
 
 A substantial fraction of the signal is already present in the embeddings (AUC ≈ 0.72), indicating lexical priors. However, later layers significantly amplify this signal beyond a bag-of-words baseline (0.97 vs 0.88), suggesting the model learns additional structure beyond what individual words provide.
 
 ### Layer-wise decodability
 
-Both the base and safety-tuned model start near 0.72 at the embedding layer and climb to ~0.97 by layer 13, then plateau. The curves are nearly identical — safety fine-tuning doesn't alter the internal representation of harm. It just wires a different output (refusal) to a signal that's already there.
+Both the base and safety-tuned model start near 0.72 at the embedding layer and climb to ~0.97 by layer 13, then plateau. The curves are nearly identical — safety fine-tuning does not measurably change the linear decodability of harm in this setup. The information needed to detect harmful intent is present in both models; safety training wires a different behavioural response (refusal) to a signal that's already there.
+
+The probe itself is a `StandardScaler` → `LogisticRegression` pipeline trained on mean-pooled (last 8 tokens) residual stream vectors at each layer, evaluated with 5-fold GroupKFold cross-validation.
 
 ![AUC vs Layer](results/plot1_auc_vs_layer.png)
 
@@ -97,6 +99,8 @@ The sharpest diagnostic. We shuffle the words within each prompt — preserving 
 | Shuffled word order | 0.920 | 27 |
 
 AUC drops by 0.054. The signal is **mixed**: a large lexical/distributional component survives word-order destruction, but some additional compositional structure is lost. The model is reading both *which words appear* and *how they're arranged* — but vocabulary does most of the heavy lifting.
+
+The peak layer also shifts deeper (13 → 27) — when compositional structure is destroyed, the model needs more computation to extract whatever signal remains from the scrambled token soup.
 
 ![Word-order shuffle](results/plot4_word_shuffle.png)
 
