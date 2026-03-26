@@ -1,0 +1,8 @@
+torch
+transformers>=4.53.0
+accelerate
+scikit-learn
+matplotlib
+pandas
+numpy
+jupyter
