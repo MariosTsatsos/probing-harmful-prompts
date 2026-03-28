@@ -30,7 +30,7 @@ The punchline: **by layer 13 of 36, the model "knows."** And it "knows" whether 
 pip install -r requirements.txt
 ```
 
-The notebook was developed and tested on **Google Colab with a Tesla T4 GPU**. Any environment with a CUDA GPU and ~8GB VRAM will work. CPU/MPS (Apple Silicon) works too, just slower.
+The notebook was developed and tested on **Google Colab with a Tesla T4 GPU**. Any environment with a CUDA GPU and ~8GB VRAM will work. CPU/MPS (Apple Silicon) works too, just slower. N.B.: In a Colab notebook you might need to drop pandas and numpy from the install line. 
 
 ### Models
 
