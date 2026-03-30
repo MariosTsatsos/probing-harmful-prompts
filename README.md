@@ -137,7 +137,7 @@ This is a small, controlled probing study — not a full behavioural or causal i
 
 ## Dataset design
 
-The dataset (`data/data_v7.csv`) was built with three layers of control to prevent the probe from learning shortcuts instead of intent:
+The dataset (`data/data_v7.csv`) was synthetically built (by LLMs) with three layers of control to prevent the probe from learning shortcuts instead of intent:
 
 **Vocabulary control** — all four harm levels discuss the same dangerous topics. "Chlorine gas," "keylogger," "grooming," and "deadbolt" appear at every level. The difference is framing: explain → analyse → enable → do.
 
@@ -161,14 +161,14 @@ If extending this work:
 
 ## Credits
 
-Initial conception and questions posed by M.T.. Design and structured shaped after several interactions with LLMs (Claude and ChatGPT). Code and documentation written by ClaudeCode. 
+Initial conception and questions posed by M.T.. The design and structured was shaped after several iterations with LLMs (Claude and ChatGPT). Dataset, code and documentation written by Claude Code. 
 
 ### Motivated by
 
 - [Marks & Tegmark (2024)](https://arxiv.org/abs/2310.06824) — *The Geometry of Truth*
-- [Apollo Research (2025)](https://arxiv.org/abs/2409.04109) — *Detecting Strategic Deception*
-- [McKenzie et al. (2025)](https://arxiv.org/abs/2502.13995) — *Detecting High-Stakes Interactions*
-- [ARENA Chapter 1.11](https://learn.arena.education/chapter1_transformer_interp/11_probing/intro) — Linear Probing exercises
+- [Apollo Research (2025)](https://arxiv.org/abs/2502.03407) — *Detecting Strategic Deception*
+- [McKenzie et al. (2025)](https://arxiv.org/abs/2506.10805) — *Detecting High-Stakes Interactions*
+- [ARENA Chapter 1.3](https://learn.arena.education/chapter1_transformer_interp/11_probing/intro) — Linear Probing exercises
 
 ---
 
