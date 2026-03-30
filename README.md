@@ -163,7 +163,7 @@ If extending this work:
 
 Initial conception and questions posed by M.T.. Design and structured shaped after several interactions with LLMs (Claude and ChatGPT). Code and documentation written by ClaudeCode. 
 
-###Motivated by
+### Motivated by
 
 - [Marks & Tegmark (2024)](https://arxiv.org/abs/2310.06824) — *The Geometry of Truth*
 - [Apollo Research (2025)](https://arxiv.org/abs/2409.04109) — *Detecting Strategic Deception*
