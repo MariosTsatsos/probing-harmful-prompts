@@ -4,11 +4,11 @@
 
 If you gradually make a question more and more harmful — from "how does chlorine gas affect the lungs?" to "how do I produce chlorine gas at home to hurt someone?" — at what point does a language model *internally* recognise that something dangerous is going on?
 
-Not when it refuses. Not when it outputs a warning. Internally — in the raw activations flowing through its layers.
+Not when it refuses, not when it outputs a warning, but when this happens internally, in the raw activations flowing through its layers.
 
-This project answers that question using **linear probes**: dead-simple logistic regression classifiers trained on the model's hidden states at each layer. If a linear probe can separate harmful from non-harmful prompts at a given layer, the model has built a linearly decodable representation of "this is harmful" at that depth.
+This project answers that question using **linear probes**: a simple logistic regression classifiers trained on the model's hidden states at each layer. If a linear probe can separate harmful from non-harmful prompts at a given layer, the model has built a linearly decodable representation of "this is harmful" at that depth.
 
-The punchline: **by layer 13 of 36, the model "knows."** And it "knows" whether you safety-train it or not — the signal is linearly decodable either way.
+The result: **by layer 13 of 36, the model "knows."** And it "knows" whether you safety-train it or not — the signal is linearly decodable in both cases.
 
 ---
 
@@ -30,7 +30,7 @@ The punchline: **by layer 13 of 36, the model "knows."** And it "knows" whether 
 pip install -r requirements.txt
 ```
 
-The notebook was developed and tested on **Google Colab with a Tesla T4 GPU**. Any environment with a CUDA GPU and ~8GB VRAM will work. CPU/MPS (Apple Silicon) works too, just slower. N.B.: In a Colab notebook you might need to drop pandas and numpy from the install line. 
+The notebook was developed and tested on **Google Colab with a Tesla T4 GPU**. Any environment with a CUDA GPU and ~8GB VRAM will work. CPU/MPS (Apple Silicon) works too, just slower. P.S.: I am aware the notebook needs modifications to run outside Colab. It is possible to run it locally, but will take some re-directing from currently used libraries. 
 
 ### Models
 
@@ -159,7 +159,11 @@ If extending this work:
 
 ---
 
-## Motivated by
+## Credits
+
+Initial conception and questions posed by M.T.. Design and structured shaped after several interactions with LLMs (Claude and ChatGPT). Code and documentation written by ClaudeCode. 
+
+###Motivated by
 
 - [Marks & Tegmark (2024)](https://arxiv.org/abs/2310.06824) — *The Geometry of Truth*
 - [Apollo Research (2025)](https://arxiv.org/abs/2409.04109) — *Detecting Strategic Deception*
