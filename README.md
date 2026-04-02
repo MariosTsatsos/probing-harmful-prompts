@@ -159,7 +159,7 @@ If extending this work:
 
 ---
 
-## Credits
+## Acknowledgments
 
 Initial conception and questions posed by M.T.. The design and structured was shaped after several iterations with LLMs (Claude and ChatGPT). Dataset, code and documentation written by Claude Code. 
 
