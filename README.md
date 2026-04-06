@@ -8,7 +8,7 @@ Not when it refuses, not when it outputs a warning, but when this happens intern
 
 This project answers that question using **linear probes**: a simple logistic regression classifiers trained on the model's hidden states at each layer. If a linear probe can separate harmful from non-harmful prompts at a given layer, the model has built a linearly decodable representation of "this is harmful" at that depth.
 
-The result: **by layer 13 of 36, the model "knows."** And it "knows" whether you safety-train it or not — the signal is linearly decodable in both cases.
+The result: **by layer 13 of 36, the model "knows".** And it "knows" whether it's safety-trained it notl; the signal is linearly decodable in both cases.
 
 ---
 
@@ -167,7 +167,7 @@ Initial conception and questions posed by M.T.. The design and structured was sh
 
 - [Marks & Tegmark (2024)](https://arxiv.org/abs/2310.06824) — *The Geometry of Truth*
 - [Apollo Research (2025)](https://arxiv.org/abs/2502.03407) — *Detecting Strategic Deception*
-- [McKenzie et al. (2025)](https://arxiv.org/abs/2506.10805) — *Detecting High-Stakes Interactions*
+- [McKenzie et al. (2025)](https://arxiv.org/abs/2506.10805) — *Detecting High-Stakes Interactions with Activation Probes*
 - [ARENA Chapter 1.3](https://learn.arena.education/chapter1_transformer_interp/11_probing/intro) — Linear Probing exercises
 
 ---
